@@ -1,0 +1,14 @@
+*.class
+*.log
+antlr*.jar
+.idea
+gen
+RalphLexer.tokens
+.antlr
+target
+src
+
+*.g4
+*.interp
+*.tokens
+node_modules/
