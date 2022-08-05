@@ -8,7 +8,7 @@ RalphLexer.tokens
 target
 src
 
-*.g4
+*.g4*
 *.interp
 *.tokens
 node_modules/
