@@ -1,4 +1,4 @@
-// Generated from RalphParser.g4 by ANTLR 4.9.0-SNAPSHOT
+// Generated from ./src/RalphParser.g4 by ANTLR 4.9.0-SNAPSHOT
 
 
 import { ATN } from "antlr4ts/atn/ATN";

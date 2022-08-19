@@ -1,6 +1,10 @@
 
 build:
-	yarn run antlr4ts	
+	yarn run antlr4ts 
+	yarn run build
+
+fmt:
+	yarn run fmt	
 
 dep:
 	yarn install

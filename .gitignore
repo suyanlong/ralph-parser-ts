@@ -6,9 +6,10 @@ gen
 RalphLexer.tokens
 .antlr
 target
-src
+dist
+lib
 
 *.g4*
 *.interp
 *.tokens
-node_modules/
+node_modules
