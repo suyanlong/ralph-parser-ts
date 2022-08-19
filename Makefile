@@ -13,4 +13,4 @@ dep:
 	wget https://github.com/suyanlong/ralph-antlr4/raw/main/RalphParser.g4 -O src/RalphParser.g4
 
 clean:
-	rm -rf *.g4* *.interp *.tokens dist
+	rm -rf *.g4* *.interp *.tokens dist lib

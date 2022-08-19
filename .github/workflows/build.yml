@@ -13,13 +13,13 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - "ubuntu-latest"
+          - 'ubuntu-latest'
         node:
           # Run tests on minimal version we support
-          - "17.6.0"
+          - '17.6.0'
         NPM_CLIENT:
-          - "yarn"
-          - "npm"
+          - 'yarn'
+          - 'npm'
           # - "pnpm"
     env:
       INSTALL_PACKAGE: true
