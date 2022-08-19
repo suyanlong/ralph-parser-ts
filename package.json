@@ -1,15 +1,15 @@
 {
-  "name": "ralph-parser",
+  "name": "ralph-parser-ts",
   "version": "0.0.1",
   "description": "A Ralph language parser",
   "private": false,
   "license": "GNU3",
   "author": "suyanlong <syl416419@gmail.com>",
   "bugs": {
-    "url": "https://github.com/suyanlong/ralph-parser/issues"
+    "url": "https://github.com/suyanlong/ralph-parser-ts/issues"
   },
-  "homepage": "https://github.com/suyanlong/ralph-parser#readme",
-  "repository": "git+https://github.com/suyanlong/ralph-parser.git",
+  "homepage": "https://github.com/suyanlong/ralph-parser-ts#readme.md",
+  "repository": "git+https://github.com/suyanlong/ralph-parser-ts.git",
   "keywords": [
     "ralph",
     "parser",

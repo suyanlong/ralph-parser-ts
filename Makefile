@@ -8,8 +8,9 @@ fmt:
 
 dep:
 	yarn install
-	wget https://github.com/suyanlong/ralph-antlr4/raw/main/RalphLexer.g4
-	wget https://github.com/suyanlong/ralph-antlr4/raw/main/RalphParser.g4
+	mkdir -p src
+	wget https://github.com/suyanlong/ralph-antlr4/raw/main/RalphLexer.g4  -O src/RalphLexer.g4
+	wget https://github.com/suyanlong/ralph-antlr4/raw/main/RalphParser.g4 -O src/RalphParser.g4
 
 clean:
-	rm -rf *.g4* *.interp *.tokens
+	rm -rf *.g4* *.interp *.tokens dist
