@@ -68,7 +68,7 @@ export class RalphParser extends Parser {
 	public static readonly U256 = 38;
 	public static readonly BYTEVEC = 39;
 	public static readonly ADDRESS = 40;
-	public static readonly RETURNBACK = 41;
+	public static readonly R_ARROW = 41;
 	public static readonly IDENTIFIER = 42;
 	public static readonly L_PAREN = 43;
 	public static readonly R_PAREN = 44;
@@ -236,18 +236,17 @@ export class RalphParser extends Parser {
 		"IF", "ELSE", "FOR", "WHILE", "BREAK", "CONTINUE", "DEFAULT", "GOTO", 
 		"SWITCH", "CASE", "TYPE", "LET", "CONST", "MUT", "ALPH", "EXTENDS", "ABSTRACT", 
 		"IMPLEMENTS", "EVENT", "EVMIT", "USING", "AT", "BOOL", "I256", "U256", 
-		"BYTEVEC", "ADDRESS", "RETURNBACK", "IDENTIFIER", "L_PAREN", "R_PAREN", 
-		"L_CURLY", "R_CURLY", "L_BRACKET", "R_BRACKET", "ASSIGN", "COMMA", "SEMI", 
-		"COLON", "DOT", "PLUS_PLUS", "MINUS_MINUS", "DECLARE_ASSIGN", "ELLIPSIS", 
-		"LOGICAL_OR", "LOGICAL_AND", "EQUALS", "NOT_EQUALS", "LESS", "LESS_OR_EQUALS", 
-		"GREATER", "GREATER_OR_EQUALS", "OR", "DIV", "MOD", "LSHIFT", "RSHIFT", 
-		"BIT_CLEAR", "EXCLAMATION", "PLUS", "MINUS", "CARET", "STAR", "AMPERSAND", 
-		"RECEIVE", "DECIMAL_LIT", "BINARY_LIT", "OCTAL_LIT", "HEX_LIT", "FLOAT_LIT", 
-		"DECIMAL_FLOAT_LIT", "HEX_FLOAT_LIT", "IMAGINARY_LIT", "RUNE_LIT", "BYTE_VALUE", 
-		"OCTAL_BYTE_VALUE", "HEX_BYTE_VALUE", "LITTLE_U_VALUE", "BIG_U_VALUE", 
-		"RAW_STRING_LIT", "INTERPRETED_STRING_LIT", "WS", "COMMENT", "TERMINATOR", 
-		"LINE_COMMENT", "WS_NLSEMI", "COMMENT_NLSEMI", "LINE_COMMENT_NLSEMI", 
-		"EOS", "OTHER", "BYTE",
+		"BYTEVEC", "ADDRESS", "R_ARROW", "IDENTIFIER", "L_PAREN", "R_PAREN", "L_CURLY", 
+		"R_CURLY", "L_BRACKET", "R_BRACKET", "ASSIGN", "COMMA", "SEMI", "COLON", 
+		"DOT", "PLUS_PLUS", "MINUS_MINUS", "DECLARE_ASSIGN", "ELLIPSIS", "LOGICAL_OR", 
+		"LOGICAL_AND", "EQUALS", "NOT_EQUALS", "LESS", "LESS_OR_EQUALS", "GREATER", 
+		"GREATER_OR_EQUALS", "OR", "DIV", "MOD", "LSHIFT", "RSHIFT", "BIT_CLEAR", 
+		"EXCLAMATION", "PLUS", "MINUS", "CARET", "STAR", "AMPERSAND", "RECEIVE", 
+		"DECIMAL_LIT", "BINARY_LIT", "OCTAL_LIT", "HEX_LIT", "FLOAT_LIT", "DECIMAL_FLOAT_LIT", 
+		"HEX_FLOAT_LIT", "IMAGINARY_LIT", "RUNE_LIT", "BYTE_VALUE", "OCTAL_BYTE_VALUE", 
+		"HEX_BYTE_VALUE", "LITTLE_U_VALUE", "BIG_U_VALUE", "RAW_STRING_LIT", "INTERPRETED_STRING_LIT", 
+		"WS", "COMMENT", "TERMINATOR", "LINE_COMMENT", "WS_NLSEMI", "COMMENT_NLSEMI", 
+		"LINE_COMMENT_NLSEMI", "EOS", "OTHER", "BYTE",
 	];
 	public static readonly VOCABULARY: Vocabulary = new VocabularyImpl(RalphParser._LITERAL_NAMES, RalphParser._SYMBOLIC_NAMES, []);
 
@@ -1759,10 +1758,10 @@ export class RalphParser extends Parser {
 			this.state = 374;
 			this._errHandler.sync(this);
 			_la = this._input.LA(1);
-			if (_la === RalphParser.RETURNBACK) {
+			if (_la === RalphParser.R_ARROW) {
 				{
 				this.state = 372;
-				this.match(RalphParser.RETURNBACK);
+				this.match(RalphParser.R_ARROW);
 				this.state = 373;
 				this.result();
 				}
@@ -5495,7 +5494,7 @@ export class SignatureContext extends ParserRuleContext {
 	public parameters(): ParametersContext {
 		return this.getRuleContext(0, ParametersContext);
 	}
-	public RETURNBACK(): TerminalNode | undefined { return this.tryGetToken(RalphParser.RETURNBACK, 0); }
+	public R_ARROW(): TerminalNode | undefined { return this.tryGetToken(RalphParser.R_ARROW, 0); }
 	public result(): ResultContext | undefined {
 		return this.tryGetRuleContext(0, ResultContext);
 	}
