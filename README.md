@@ -30,6 +30,17 @@ or
 yarn run antlr4ts
 ```
 
+## Install use
+[npm package](https://www.npmjs.com/package/ralph-parser-ts)
+```shell
+npm i ralph-parser-ts
+```
+or
+```shell
+yarn add ralph-parser-ts
+```
+
+
 ## More
 
 - [ralph-antlr4](https://github.com/suyanlong/ralph-antlr4)
