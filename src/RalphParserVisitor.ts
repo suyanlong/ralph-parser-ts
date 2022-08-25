@@ -11,8 +11,8 @@ import { DeclarationContext } from "./RalphParser";
 import { IdentifierListContext } from "./RalphParser";
 import { ConstDeclContext } from "./RalphParser";
 import { ConstSpecContext } from "./RalphParser";
-import { VarDeclContext } from "./RalphParser";
-import { VarSpecContext } from "./RalphParser";
+import { LetDeclContext } from "./RalphParser";
+import { LetSpecContext } from "./RalphParser";
 import { ExpressionContext } from "./RalphParser";
 import { ExpressionListContext } from "./RalphParser";
 import { PrimaryExprContext } from "./RalphParser";
@@ -139,18 +139,18 @@ export interface RalphParserVisitor<Result> extends ParseTreeVisitor<Result> {
 	visitConstSpec?: (ctx: ConstSpecContext) => Result;
 
 	/**
-	 * Visit a parse tree produced by `RalphParser.varDecl`.
+	 * Visit a parse tree produced by `RalphParser.letDecl`.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	visitVarDecl?: (ctx: VarDeclContext) => Result;
+	visitLetDecl?: (ctx: LetDeclContext) => Result;
 
 	/**
-	 * Visit a parse tree produced by `RalphParser.varSpec`.
+	 * Visit a parse tree produced by `RalphParser.letSpec`.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	visitVarSpec?: (ctx: VarSpecContext) => Result;
+	visitLetSpec?: (ctx: LetSpecContext) => Result;
 
 	/**
 	 * Visit a parse tree produced by `RalphParser.expression`.

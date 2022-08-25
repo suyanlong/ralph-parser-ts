@@ -11,8 +11,8 @@ import { DeclarationContext } from "./RalphParser";
 import { IdentifierListContext } from "./RalphParser";
 import { ConstDeclContext } from "./RalphParser";
 import { ConstSpecContext } from "./RalphParser";
-import { VarDeclContext } from "./RalphParser";
-import { VarSpecContext } from "./RalphParser";
+import { LetDeclContext } from "./RalphParser";
+import { LetSpecContext } from "./RalphParser";
 import { ExpressionContext } from "./RalphParser";
 import { ExpressionListContext } from "./RalphParser";
 import { PrimaryExprContext } from "./RalphParser";
@@ -168,26 +168,26 @@ export interface RalphParserListener extends ParseTreeListener {
 	exitConstSpec?: (ctx: ConstSpecContext) => void;
 
 	/**
-	 * Enter a parse tree produced by `RalphParser.varDecl`.
+	 * Enter a parse tree produced by `RalphParser.letDecl`.
 	 * @param ctx the parse tree
 	 */
-	enterVarDecl?: (ctx: VarDeclContext) => void;
+	enterLetDecl?: (ctx: LetDeclContext) => void;
 	/**
-	 * Exit a parse tree produced by `RalphParser.varDecl`.
+	 * Exit a parse tree produced by `RalphParser.letDecl`.
 	 * @param ctx the parse tree
 	 */
-	exitVarDecl?: (ctx: VarDeclContext) => void;
+	exitLetDecl?: (ctx: LetDeclContext) => void;
 
 	/**
-	 * Enter a parse tree produced by `RalphParser.varSpec`.
+	 * Enter a parse tree produced by `RalphParser.letSpec`.
 	 * @param ctx the parse tree
 	 */
-	enterVarSpec?: (ctx: VarSpecContext) => void;
+	enterLetSpec?: (ctx: LetSpecContext) => void;
 	/**
-	 * Exit a parse tree produced by `RalphParser.varSpec`.
+	 * Exit a parse tree produced by `RalphParser.letSpec`.
 	 * @param ctx the parse tree
 	 */
-	exitVarSpec?: (ctx: VarSpecContext) => void;
+	exitLetSpec?: (ctx: LetSpecContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `RalphParser.expression`.

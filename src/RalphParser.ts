@@ -140,8 +140,8 @@ export class RalphParser extends Parser {
 	public static readonly RULE_identifierList = 5;
 	public static readonly RULE_constDecl = 6;
 	public static readonly RULE_constSpec = 7;
-	public static readonly RULE_varDecl = 8;
-	public static readonly RULE_varSpec = 9;
+	public static readonly RULE_letDecl = 8;
+	public static readonly RULE_letSpec = 9;
 	public static readonly RULE_expression = 10;
 	public static readonly RULE_expressionList = 11;
 	public static readonly RULE_primaryExpr = 12;
@@ -204,7 +204,7 @@ export class RalphParser extends Parser {
 	// tslint:disable:no-trailing-whitespace
 	public static readonly ruleNames: string[] = [
 		"sourceFile", "importDecl", "importSpec", "importPath", "declaration", 
-		"identifierList", "constDecl", "constSpec", "varDecl", "varSpec", "expression", 
+		"identifierList", "constDecl", "constSpec", "letDecl", "letSpec", "expression", 
 		"expressionList", "primaryExpr", "conversion", "methodExpr", "primitiveType", 
 		"typeDecl", "typeSpec", "typeList", "type_", "typeName", "typeLit", "arrayType", 
 		"arrayLength", "elementType", "functionType", "signature", "result", "parameters", 
@@ -495,7 +495,7 @@ export class RalphParser extends Parser {
 				this.enterOuterAlt(_localctx, 3);
 				{
 				this.state = 179;
-				this.varDecl();
+				this.letDecl();
 				}
 				break;
 			default:
@@ -669,9 +669,9 @@ export class RalphParser extends Parser {
 		return _localctx;
 	}
 	// @RuleVersion(0)
-	public varDecl(): VarDeclContext {
-		let _localctx: VarDeclContext = new VarDeclContext(this._ctx, this.state);
-		this.enterRule(_localctx, 16, RalphParser.RULE_varDecl);
+	public letDecl(): LetDeclContext {
+		let _localctx: LetDeclContext = new LetDeclContext(this._ctx, this.state);
+		this.enterRule(_localctx, 16, RalphParser.RULE_letDecl);
 		let _la: number;
 		try {
 			this.enterOuterAlt(_localctx, 1);
@@ -694,7 +694,7 @@ export class RalphParser extends Parser {
 			case RalphParser.IDENTIFIER:
 				{
 				this.state = 216;
-				this.varSpec();
+				this.letSpec();
 				}
 				break;
 			case RalphParser.L_PAREN:
@@ -708,7 +708,7 @@ export class RalphParser extends Parser {
 					{
 					{
 					this.state = 218;
-					this.varSpec();
+					this.letSpec();
 					this.state = 219;
 					this.eos();
 					}
@@ -741,9 +741,9 @@ export class RalphParser extends Parser {
 		return _localctx;
 	}
 	// @RuleVersion(0)
-	public varSpec(): VarSpecContext {
-		let _localctx: VarSpecContext = new VarSpecContext(this._ctx, this.state);
-		this.enterRule(_localctx, 18, RalphParser.RULE_varSpec);
+	public letSpec(): LetSpecContext {
+		let _localctx: LetSpecContext = new LetSpecContext(this._ctx, this.state);
+		this.enterRule(_localctx, 18, RalphParser.RULE_letSpec);
 		let _la: number;
 		try {
 			this.enterOuterAlt(_localctx, 1);
@@ -4577,8 +4577,8 @@ export class DeclarationContext extends ParserRuleContext {
 	public typeDecl(): TypeDeclContext | undefined {
 		return this.tryGetRuleContext(0, TypeDeclContext);
 	}
-	public varDecl(): VarDeclContext | undefined {
-		return this.tryGetRuleContext(0, VarDeclContext);
+	public letDecl(): LetDeclContext | undefined {
+		return this.tryGetRuleContext(0, LetDeclContext);
 	}
 	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
@@ -4744,15 +4744,15 @@ export class ConstSpecContext extends ParserRuleContext {
 }
 
 
-export class VarDeclContext extends ParserRuleContext {
+export class LetDeclContext extends ParserRuleContext {
 	public LET(): TerminalNode { return this.getToken(RalphParser.LET, 0); }
-	public varSpec(): VarSpecContext[];
-	public varSpec(i: number): VarSpecContext;
-	public varSpec(i?: number): VarSpecContext | VarSpecContext[] {
+	public letSpec(): LetSpecContext[];
+	public letSpec(i: number): LetSpecContext;
+	public letSpec(i?: number): LetSpecContext | LetSpecContext[] {
 		if (i === undefined) {
-			return this.getRuleContexts(VarSpecContext);
+			return this.getRuleContexts(LetSpecContext);
 		} else {
-			return this.getRuleContext(i, VarSpecContext);
+			return this.getRuleContext(i, LetSpecContext);
 		}
 	}
 	public L_PAREN(): TerminalNode | undefined { return this.tryGetToken(RalphParser.L_PAREN, 0); }
@@ -4771,23 +4771,23 @@ export class VarDeclContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return RalphParser.RULE_varDecl; }
+	public get ruleIndex(): number { return RalphParser.RULE_letDecl; }
 	// @Override
 	public enterRule(listener: RalphParserListener): void {
-		if (listener.enterVarDecl) {
-			listener.enterVarDecl(this);
+		if (listener.enterLetDecl) {
+			listener.enterLetDecl(this);
 		}
 	}
 	// @Override
 	public exitRule(listener: RalphParserListener): void {
-		if (listener.exitVarDecl) {
-			listener.exitVarDecl(this);
+		if (listener.exitLetDecl) {
+			listener.exitLetDecl(this);
 		}
 	}
 	// @Override
 	public accept<Result>(visitor: RalphParserVisitor<Result>): Result {
-		if (visitor.visitVarDecl) {
-			return visitor.visitVarDecl(this);
+		if (visitor.visitLetDecl) {
+			return visitor.visitLetDecl(this);
 		} else {
 			return visitor.visitChildren(this);
 		}
@@ -4795,7 +4795,7 @@ export class VarDeclContext extends ParserRuleContext {
 }
 
 
-export class VarSpecContext extends ParserRuleContext {
+export class LetSpecContext extends ParserRuleContext {
 	public identifierList(): IdentifierListContext {
 		return this.getRuleContext(0, IdentifierListContext);
 	}
@@ -4810,23 +4810,23 @@ export class VarSpecContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return RalphParser.RULE_varSpec; }
+	public get ruleIndex(): number { return RalphParser.RULE_letSpec; }
 	// @Override
 	public enterRule(listener: RalphParserListener): void {
-		if (listener.enterVarSpec) {
-			listener.enterVarSpec(this);
+		if (listener.enterLetSpec) {
+			listener.enterLetSpec(this);
 		}
 	}
 	// @Override
 	public exitRule(listener: RalphParserListener): void {
-		if (listener.exitVarSpec) {
-			listener.exitVarSpec(this);
+		if (listener.exitLetSpec) {
+			listener.exitLetSpec(this);
 		}
 	}
 	// @Override
 	public accept<Result>(visitor: RalphParserVisitor<Result>): Result {
-		if (visitor.visitVarSpec) {
-			return visitor.visitVarSpec(this);
+		if (visitor.visitLetSpec) {
+			return visitor.visitLetSpec(this);
 		} else {
 			return visitor.visitChildren(this);
 		}
