@@ -14,3 +14,6 @@ dep:
 
 clean:
 	rm -rf *.g4* *.interp *.tokens dist lib
+
+release:
+	npm publish --access public
