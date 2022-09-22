@@ -1,6 +1,6 @@
 {
   "name": "ralph-parser-ts",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A Ralph language parser",
   "private": false,
   "license": "GNU3",
