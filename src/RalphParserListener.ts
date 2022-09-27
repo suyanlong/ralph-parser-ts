@@ -18,6 +18,7 @@ import { ArrayExprContext } from "./RalphParser";
 import { Type_Context } from "./RalphParser";
 import { TypeDeclStmtContext } from "./RalphParser";
 import { ResultContext } from "./RalphParser";
+import { ParamAnnotationContext } from "./RalphParser";
 import { ParamContext } from "./RalphParser";
 import { ParamListContext } from "./RalphParser";
 import { MethodDeclContext } from "./RalphParser";
@@ -29,7 +30,8 @@ import { TypeStructBodyContext } from "./RalphParser";
 import { TxScriptContext } from "./RalphParser";
 import { ContractContext } from "./RalphParser";
 import { InterfaceContext } from "./RalphParser";
-import { EventEmitContext } from "./RalphParser";
+import { EventContext } from "./RalphParser";
+import { EmitContext } from "./RalphParser";
 import { AnnotationContext } from "./RalphParser";
 import { BlockContext } from "./RalphParser";
 import { StatementContext } from "./RalphParser";
@@ -213,6 +215,17 @@ export interface RalphParserListener extends ParseTreeListener {
 	exitResult?: (ctx: ResultContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `RalphParser.paramAnnotation`.
+	 * @param ctx the parse tree
+	 */
+	enterParamAnnotation?: (ctx: ParamAnnotationContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.paramAnnotation`.
+	 * @param ctx the parse tree
+	 */
+	exitParamAnnotation?: (ctx: ParamAnnotationContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `RalphParser.param`.
 	 * @param ctx the parse tree
 	 */
@@ -334,15 +347,26 @@ export interface RalphParserListener extends ParseTreeListener {
 	exitInterface?: (ctx: InterfaceContext) => void;
 
 	/**
-	 * Enter a parse tree produced by `RalphParser.eventEmit`.
+	 * Enter a parse tree produced by `RalphParser.event`.
 	 * @param ctx the parse tree
 	 */
-	enterEventEmit?: (ctx: EventEmitContext) => void;
+	enterEvent?: (ctx: EventContext) => void;
 	/**
-	 * Exit a parse tree produced by `RalphParser.eventEmit`.
+	 * Exit a parse tree produced by `RalphParser.event`.
 	 * @param ctx the parse tree
 	 */
-	exitEventEmit?: (ctx: EventEmitContext) => void;
+	exitEvent?: (ctx: EventContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `RalphParser.emit`.
+	 * @param ctx the parse tree
+	 */
+	enterEmit?: (ctx: EmitContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.emit`.
+	 * @param ctx the parse tree
+	 */
+	exitEmit?: (ctx: EmitContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `RalphParser.annotation`.

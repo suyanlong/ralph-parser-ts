@@ -18,6 +18,7 @@ import { ArrayExprContext } from "./RalphParser";
 import { Type_Context } from "./RalphParser";
 import { TypeDeclStmtContext } from "./RalphParser";
 import { ResultContext } from "./RalphParser";
+import { ParamAnnotationContext } from "./RalphParser";
 import { ParamContext } from "./RalphParser";
 import { ParamListContext } from "./RalphParser";
 import { MethodDeclContext } from "./RalphParser";
@@ -29,7 +30,8 @@ import { TypeStructBodyContext } from "./RalphParser";
 import { TxScriptContext } from "./RalphParser";
 import { ContractContext } from "./RalphParser";
 import { InterfaceContext } from "./RalphParser";
-import { EventEmitContext } from "./RalphParser";
+import { EventContext } from "./RalphParser";
+import { EmitContext } from "./RalphParser";
 import { AnnotationContext } from "./RalphParser";
 import { BlockContext } from "./RalphParser";
 import { StatementContext } from "./RalphParser";
@@ -156,6 +158,13 @@ export interface RalphParserVisitor<Result> extends ParseTreeVisitor<Result> {
 	visitResult?: (ctx: ResultContext) => Result;
 
 	/**
+	 * Visit a parse tree produced by `RalphParser.paramAnnotation`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitParamAnnotation?: (ctx: ParamAnnotationContext) => Result;
+
+	/**
 	 * Visit a parse tree produced by `RalphParser.param`.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -233,11 +242,18 @@ export interface RalphParserVisitor<Result> extends ParseTreeVisitor<Result> {
 	visitInterface?: (ctx: InterfaceContext) => Result;
 
 	/**
-	 * Visit a parse tree produced by `RalphParser.eventEmit`.
+	 * Visit a parse tree produced by `RalphParser.event`.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	visitEventEmit?: (ctx: EventEmitContext) => Result;
+	visitEvent?: (ctx: EventContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `RalphParser.emit`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitEmit?: (ctx: EmitContext) => Result;
 
 	/**
 	 * Visit a parse tree produced by `RalphParser.annotation`.
