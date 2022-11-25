@@ -5,26 +5,39 @@ import { ParseTreeListener } from "antlr4ts/tree/ParseTreeListener";
 
 import { SourceFileContext } from "./RalphParser";
 import { IdentifierListContext } from "./RalphParser";
+import { VarDeclSingleContext } from "./RalphParser";
+import { VarDeclMultiContext } from "./RalphParser";
 import { VarDeclContext } from "./RalphParser";
+import { VarNameContext } from "./RalphParser";
 import { ExpressionContext } from "./RalphParser";
 import { ExpressionListContext } from "./RalphParser";
-import { CallContext } from "./RalphParser";
+import { CallChainContext } from "./RalphParser";
+import { MethodCallContext } from "./RalphParser";
+import { ApsAlphContext } from "./RalphParser";
+import { ApsTokenContext } from "./RalphParser";
+import { ApsBothContext } from "./RalphParser";
+import { ApsContext } from "./RalphParser";
 import { PrimaryExprContext } from "./RalphParser";
 import { PrimitiveTypeContext } from "./RalphParser";
 import { ArrayTypeContext } from "./RalphParser";
 import { ArrayExprContext } from "./RalphParser";
 import { TypeNameContext } from "./RalphParser";
 import { ResultContext } from "./RalphParser";
-import { ParamAnnotationContext } from "./RalphParser";
 import { ParamContext } from "./RalphParser";
 import { ParamListContext } from "./RalphParser";
 import { MethodDeclContext } from "./RalphParser";
 import { BasicLitContext } from "./RalphParser";
 import { IntegerContext } from "./RalphParser";
 import { String_Context } from "./RalphParser";
+import { VarNameAssignContext } from "./RalphParser";
+import { EnumContext } from "./RalphParser";
 import { TypeStructBodyContext } from "./RalphParser";
 import { TxScriptContext } from "./RalphParser";
+import { AssetScriptContext } from "./RalphParser";
 import { ContractContext } from "./RalphParser";
+import { ExtendsContext } from "./RalphParser";
+import { ContractExtendsContext } from "./RalphParser";
+import { ImplementsContext } from "./RalphParser";
 import { InterfaceContext } from "./RalphParser";
 import { EventContext } from "./RalphParser";
 import { EmitContext } from "./RalphParser";
@@ -35,7 +48,9 @@ import { SimpleStmtContext } from "./RalphParser";
 import { EmptyStmtContext } from "./RalphParser";
 import { ReturnStmtContext } from "./RalphParser";
 import { IfStmtContext } from "./RalphParser";
+import { ElseStmtContext } from "./RalphParser";
 import { WhileStmtContext } from "./RalphParser";
+import { ForStmtContext } from "./RalphParser";
 import { EosContext } from "./RalphParser";
 
 
@@ -67,6 +82,28 @@ export interface RalphParserListener extends ParseTreeListener {
 	exitIdentifierList?: (ctx: IdentifierListContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `RalphParser.varDeclSingle`.
+	 * @param ctx the parse tree
+	 */
+	enterVarDeclSingle?: (ctx: VarDeclSingleContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.varDeclSingle`.
+	 * @param ctx the parse tree
+	 */
+	exitVarDeclSingle?: (ctx: VarDeclSingleContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `RalphParser.varDeclMulti`.
+	 * @param ctx the parse tree
+	 */
+	enterVarDeclMulti?: (ctx: VarDeclMultiContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.varDeclMulti`.
+	 * @param ctx the parse tree
+	 */
+	exitVarDeclMulti?: (ctx: VarDeclMultiContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `RalphParser.varDecl`.
 	 * @param ctx the parse tree
 	 */
@@ -76,6 +113,17 @@ export interface RalphParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitVarDecl?: (ctx: VarDeclContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `RalphParser.varName`.
+	 * @param ctx the parse tree
+	 */
+	enterVarName?: (ctx: VarNameContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.varName`.
+	 * @param ctx the parse tree
+	 */
+	exitVarName?: (ctx: VarNameContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `RalphParser.expression`.
@@ -100,15 +148,70 @@ export interface RalphParserListener extends ParseTreeListener {
 	exitExpressionList?: (ctx: ExpressionListContext) => void;
 
 	/**
-	 * Enter a parse tree produced by `RalphParser.call`.
+	 * Enter a parse tree produced by `RalphParser.callChain`.
 	 * @param ctx the parse tree
 	 */
-	enterCall?: (ctx: CallContext) => void;
+	enterCallChain?: (ctx: CallChainContext) => void;
 	/**
-	 * Exit a parse tree produced by `RalphParser.call`.
+	 * Exit a parse tree produced by `RalphParser.callChain`.
 	 * @param ctx the parse tree
 	 */
-	exitCall?: (ctx: CallContext) => void;
+	exitCallChain?: (ctx: CallChainContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `RalphParser.methodCall`.
+	 * @param ctx the parse tree
+	 */
+	enterMethodCall?: (ctx: MethodCallContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.methodCall`.
+	 * @param ctx the parse tree
+	 */
+	exitMethodCall?: (ctx: MethodCallContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `RalphParser.apsAlph`.
+	 * @param ctx the parse tree
+	 */
+	enterApsAlph?: (ctx: ApsAlphContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.apsAlph`.
+	 * @param ctx the parse tree
+	 */
+	exitApsAlph?: (ctx: ApsAlphContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `RalphParser.apsToken`.
+	 * @param ctx the parse tree
+	 */
+	enterApsToken?: (ctx: ApsTokenContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.apsToken`.
+	 * @param ctx the parse tree
+	 */
+	exitApsToken?: (ctx: ApsTokenContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `RalphParser.apsBoth`.
+	 * @param ctx the parse tree
+	 */
+	enterApsBoth?: (ctx: ApsBothContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.apsBoth`.
+	 * @param ctx the parse tree
+	 */
+	exitApsBoth?: (ctx: ApsBothContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `RalphParser.aps`.
+	 * @param ctx the parse tree
+	 */
+	enterAps?: (ctx: ApsContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.aps`.
+	 * @param ctx the parse tree
+	 */
+	exitAps?: (ctx: ApsContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `RalphParser.primaryExpr`.
@@ -177,17 +280,6 @@ export interface RalphParserListener extends ParseTreeListener {
 	exitResult?: (ctx: ResultContext) => void;
 
 	/**
-	 * Enter a parse tree produced by `RalphParser.paramAnnotation`.
-	 * @param ctx the parse tree
-	 */
-	enterParamAnnotation?: (ctx: ParamAnnotationContext) => void;
-	/**
-	 * Exit a parse tree produced by `RalphParser.paramAnnotation`.
-	 * @param ctx the parse tree
-	 */
-	exitParamAnnotation?: (ctx: ParamAnnotationContext) => void;
-
-	/**
 	 * Enter a parse tree produced by `RalphParser.param`.
 	 * @param ctx the parse tree
 	 */
@@ -254,6 +346,28 @@ export interface RalphParserListener extends ParseTreeListener {
 	exitString_?: (ctx: String_Context) => void;
 
 	/**
+	 * Enter a parse tree produced by `RalphParser.varNameAssign`.
+	 * @param ctx the parse tree
+	 */
+	enterVarNameAssign?: (ctx: VarNameAssignContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.varNameAssign`.
+	 * @param ctx the parse tree
+	 */
+	exitVarNameAssign?: (ctx: VarNameAssignContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `RalphParser.enum`.
+	 * @param ctx the parse tree
+	 */
+	enterEnum?: (ctx: EnumContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.enum`.
+	 * @param ctx the parse tree
+	 */
+	exitEnum?: (ctx: EnumContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `RalphParser.typeStructBody`.
 	 * @param ctx the parse tree
 	 */
@@ -276,6 +390,17 @@ export interface RalphParserListener extends ParseTreeListener {
 	exitTxScript?: (ctx: TxScriptContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `RalphParser.assetScript`.
+	 * @param ctx the parse tree
+	 */
+	enterAssetScript?: (ctx: AssetScriptContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.assetScript`.
+	 * @param ctx the parse tree
+	 */
+	exitAssetScript?: (ctx: AssetScriptContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `RalphParser.contract`.
 	 * @param ctx the parse tree
 	 */
@@ -285,6 +410,39 @@ export interface RalphParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitContract?: (ctx: ContractContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `RalphParser.extends`.
+	 * @param ctx the parse tree
+	 */
+	enterExtends?: (ctx: ExtendsContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.extends`.
+	 * @param ctx the parse tree
+	 */
+	exitExtends?: (ctx: ExtendsContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `RalphParser.contractExtends`.
+	 * @param ctx the parse tree
+	 */
+	enterContractExtends?: (ctx: ContractExtendsContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.contractExtends`.
+	 * @param ctx the parse tree
+	 */
+	exitContractExtends?: (ctx: ContractExtendsContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `RalphParser.implements`.
+	 * @param ctx the parse tree
+	 */
+	enterImplements?: (ctx: ImplementsContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.implements`.
+	 * @param ctx the parse tree
+	 */
+	exitImplements?: (ctx: ImplementsContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `RalphParser.interface`.
@@ -397,6 +555,17 @@ export interface RalphParserListener extends ParseTreeListener {
 	exitIfStmt?: (ctx: IfStmtContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `RalphParser.elseStmt`.
+	 * @param ctx the parse tree
+	 */
+	enterElseStmt?: (ctx: ElseStmtContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.elseStmt`.
+	 * @param ctx the parse tree
+	 */
+	exitElseStmt?: (ctx: ElseStmtContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `RalphParser.whileStmt`.
 	 * @param ctx the parse tree
 	 */
@@ -406,6 +575,17 @@ export interface RalphParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitWhileStmt?: (ctx: WhileStmtContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `RalphParser.forStmt`.
+	 * @param ctx the parse tree
+	 */
+	enterForStmt?: (ctx: ForStmtContext) => void;
+	/**
+	 * Exit a parse tree produced by `RalphParser.forStmt`.
+	 * @param ctx the parse tree
+	 */
+	exitForStmt?: (ctx: ForStmtContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `RalphParser.eos`.
